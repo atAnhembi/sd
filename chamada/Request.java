@@ -1,6 +1,7 @@
 import java.io.Serializable;
 
 public class Request implements Serializable {
+    static final long serialVersionUID = 1L;
     private String password;
     private String ra;
 
@@ -13,16 +14,8 @@ public class Request implements Serializable {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getRa() {
         return ra;
-    }
-
-    public void setRa(String ra) {
-        this.ra = ra;
     }
 
 }

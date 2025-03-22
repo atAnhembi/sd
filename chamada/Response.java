@@ -1,6 +1,7 @@
 import java.io.Serializable;
 
 public class Response implements Serializable {
+    static final long serialVersionUID = 1L;
     private int cod;
     private String message;
     
