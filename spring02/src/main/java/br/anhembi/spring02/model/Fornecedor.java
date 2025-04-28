@@ -1,50 +1,49 @@
 package br.anhembi.spring02.model;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
-@Entity // armazena no BD
-public class Produto {
-    @Id // esse atributo é PK no BD
+@Entity
+public class Fornecedor {
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //1,2,3,4...
     private Long cod;
     private String name;
-    private double price;
 
-    @ManyToOne
-    @JsonIgnoreProperties("produtos")
-    private Fornecedor fornecedor;
+    @OneToMany(mappedBy = "fornecedor")
+    @JsonIgnoreProperties("fornecedor")
+    private List<Produto> produtos;
 
     public Long getCod() {
         return cod;
     }
+
     public void setCod(Long cod) {
         this.cod = cod;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
-    public double getPrice() {
-        return price;
-    }
-    public void setPrice(double price) {
-        this.price = price;
+
+    public List<Produto> getProdutos() {
+        return produtos;
     }
 
-    public Fornecedor getFornecedor() {
-        return fornecedor;
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
     }
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
-    }
-    
+
 
 }
